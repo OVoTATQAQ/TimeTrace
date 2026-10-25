@@ -1,0 +1,24 @@
+﻿Issue,Title,Priority,Dependencies,Acceptance criteria,Status
+#001,chore: 初始化 monorepo、License 与 CI,P0,无,Windows/Android 最小程序能构建,Backlog
+#002,docs: 定义跨端 segment schema v1,P0,#001,JSON 样例 + 字段定义 + 兼容策略,Backlog
+#003,feat(win): 前台窗口采集器,P0,#001,A→B→A 记录顺序正确,Backlog
+#004,feat(win): 空闲、锁屏和休眠处理,P0,#003,长时间离开不虚增活跃时长,Backlog
+#005,feat(win): SQLite 存储与恢复,P0,"#002,#003",中断后重启数据不丢失/重复,Backlog
+#006,test(core): 时间段并集和跨日切分,P0,#002,交叉、重复、跨时区样例覆盖,Backlog
+#007,feat(android): 使用情况访问权限引导,P0,#001,拒绝/授予/撤销均正常,Backlog
+#008,feat(android): UsageEvents 解析器,P0,"#002,#007",用固定测试事件生成期望区间,Backlog
+#009,feat(android): Room 与回扫游标,P0,#008,反复扫描不重复插入,Backlog
+#010,feat(android): WorkManager 机会性补采,P0,#009,打开应用可补采，后台延迟不崩溃,Backlog
+#011,feat(sync): Windows HTTPS 服务与证书管理,P0,#005,默认不开公网端口，证书稳定,Backlog
+#012,feat(sync): Android 证书指纹配对与鉴权,P0,"#009,#011",不接受未知设备或错误证书,Backlog
+#013,feat(sync): 增量上传与幂等 ACK,P0,#012,重试同批不造成重复,Backlog
+#014,feat(ui): Windows 时间轴与设备筛选,P0,"#005,#013",两设备区间正确显示,Backlog
+#015,feat(ui): 每日概览和应用排行榜,P0,"#006,#014",累计/去重指标口径明确,Backlog
+#016,feat(android-ui): 今日概览与同步状态,P0,"#009,#013",显示权限状态及最后同步时间,Backlog
+#017,feat(data): 暂停、排除、JSON/CSV 导出与删除,P0,"#005,#009",实际数据可控制和导出,Backlog
+#018,test(e2e): 断网、重启、跨日、撤销权限,P0,#013-#017,端到端关键场景全部通过,Backlog
+#019,docs: 隐私声明、安装指南、贡献指南,P0,#017,用户知道采集内容和本地存储位置,Backlog
+#020,release: 打包 Windows 安装包与 Android APK,P0,"#018,#019",能在干净机器/手机上安装与运行,Backlog
+#021,feat: 自定义应用分类,P1,#015,分类规则可持久化,Backlog
+#022,feat(sync): 局域网自动同步,P1,#013,用户明确开启后自动同步，能关闭,Backlog
+#023,feat(ui): 周趋势及报告导出,P1,#015,一周数据统计合理,Backlog

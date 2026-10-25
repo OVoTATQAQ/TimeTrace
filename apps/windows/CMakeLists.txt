@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.20)
+project(TimeTraceWindowsCollector LANGUAGES CXX)
+
+if(NOT WIN32)
+  message(FATAL_ERROR "TimeTrace Windows collector must be built on Windows with MSVC or MinGW.")
+endif()
+
+add_executable(timetrace-collector src/main.cpp)
+target_compile_features(timetrace-collector PRIVATE cxx_std_20)
+target_compile_definitions(timetrace-collector PRIVATE UNICODE _UNICODE WIN32_LEAN_AND_MEAN NOMINMAX)
+target_link_libraries(timetrace-collector PRIVATE User32 Ole32)
+if(MSVC)
+  target_compile_options(timetrace-collector PRIVATE /W4 /utf-8)
+else()
+  target_compile_options(timetrace-collector PRIVATE -Wall -Wextra)
+endif()

@@ -1,0 +1,19 @@
+# IDE and build files
+.idea/
+.vscode/
+.DS_Store
+build/
+cmake-build-*/
+.gradle/
+**/build/
+local.properties
+*.iml
+# private data (never commit activity records)
+segments.jsonl
+*usage*.jsonl
+exports/
+private-data/
+# binaries
+*.exe
+*.apk
+*.aab

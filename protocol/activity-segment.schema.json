@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeTrace ActivitySegment v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["segment_id", "device_id", "app_id", "start_ms", "end_ms", "source", "confidence"],
+  "properties": {
+    "segment_id": {"type": "string", "minLength": 1},
+    "device_id": {"type": "string", "minLength": 1},
+    "app_id": {"type": "string", "minLength": 1},
+    "start_ms": {"type": "integer", "minimum": 0},
+    "end_ms": {"type": "integer", "minimum": 0},
+    "source": {"type": "string", "enum": ["windows_foreground_poll", "android_usage_events"]},
+    "confidence": {"type": "string", "enum": ["observed", "estimated"]}
+  },
+  "description": "Time intervals are [start_ms, end_ms); end_ms must exceed start_ms (enforced by ingestion)."
+}
